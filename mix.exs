@@ -1,14 +1,14 @@
 defmodule Telegex.MixProject do
   use Mix.Project
 
-  @version "1.6.0-dev"
+  @version "1.9.0-dev"
   @description "A Telegram bot framework, with its client-side based on data and code generation, boasts unparalleled adaptation speed and correctness for new versions."
 
   def project do
     [
       app: :telegex,
       version: @version,
-      elixir: "~> 1.15",
+      elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
       dialyzer: dialyzer(),
       aliases: aliases(),
@@ -60,15 +60,15 @@ defmodule Telegex.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:dialyxir, "~> 1.4", only: [:dev], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.31", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.34", only: :dev, runtime: false},
       {:httpoison, "~> 2.2", optional: true, only: [:dev, :test]},
       {:finch, "~> 0.18.0", optional: true, only: [:dev, :test]},
       {:multipart, "~> 0.4.0", optional: true, only: [:dev, :test]},
-      {:plug, "~> 1.15", optional: true, only: [:dev, :test]},
+      {:plug, "~> 1.16", optional: true, only: [:dev, :test]},
       {:plug_cowboy, "~> 2.7", optional: true, only: [:dev, :test]},
-      {:remote_ip, "~> 1.1", optional: true, only: [:dev, :test]},
-      {:bandit, "~> 1.2", optional: true, only: [:dev, :test]},
-      {:floki, "~> 0.35.4", only: [:dev, :test]},
+      {:remote_ip, "~> 1.2", optional: true, only: [:dev, :test]},
+      {:bandit, "~> 1.5", optional: true, only: [:dev, :test]},
+      {:floki, "~> 0.36.2", only: [:dev, :test]},
       {:typed_struct, "~> 0.3.0"},
       {:jason, "~> 1.4"}
     ]
@@ -82,7 +82,7 @@ defmodule Telegex.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      "gen.all": ["gen.doc_json", "gen.code", "format"]
+      "api.upgrade": ["gen.doc_html", "gen.doc_json", "gen.code", "format"]
     ]
   end
 end

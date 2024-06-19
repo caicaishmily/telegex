@@ -1,7 +1,7 @@
 # Telegex
 
 [![.github/workflows/otp-26.yml](https://github.com/telegex/telegex/actions/workflows/otp-26.yml/badge.svg?branch=master)](https://github.com/telegex/telegex/actions/workflows/otp-26.yml)
-[![.github/workflows/otp-25.yml](https://github.com/telegex/telegex/actions/workflows/otp-25.yml/badge.svg?branch=master)](https://github.com/telegex/telegex/actions/workflows/otp-25.yml)
+[![.github/workflows/otp-27.yml](https://github.com/telegex/telegex/actions/workflows/otp-27.yml/badge.svg?branch=master)](https://github.com/telegex/telegex/actions/workflows/otp-27.yml)
 [![Module Version](https://img.shields.io/hexpm/v/telegex.svg)](https://hex.pm/packages/telegex)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/telegex/)
 [![Total Download](https://img.shields.io/hexpm/dt/telegex.svg)](https://hex.pm/packages/telegex)
@@ -15,7 +15,7 @@ _All API functions, comments, types (structures and specifications) of Telegex a
 
 Telegex is not only a client for Bot API, but also a framework for building bots. It provides convenient support for receiving updates and implements an advanced processing model based on "chains".
 
->The section regarding chains currently has no documentation available. Join the group for help: [@elixir_telegex](https://t.me/elixir_telegex).
+> The section regarding chains currently has no documentation available. Join the group for help: [@elixir_telegex](https://t.me/elixir_telegex).
 
 ## Installation
 
@@ -24,9 +24,17 @@ Add Telegex to your mix.exs dependencies:
 ```elixir
 def deps do
   [
-    {:telegex, "~> 1.5.0"},
+    {:telegex, "~> 1.8.0"},
   ]
 end
+```
+
+## ⚠️ Upgrade reminder
+
+Some modules detect `plug` during compilation. After upgrading the version, you need to manually clean up the related dependency builds.
+
+```bash
+rm -rf _build/dev/lib/plug _build/dev/lib/telegex
 ```
 
 ## Configuration
@@ -55,7 +63,7 @@ You can also choose `HTTPoison` as the client. If using HTTPoison, set the corre
 config :telegex, caller_adapter: {HTTPoison, [recv_timeout: 5 * 1000]}
 ```
 
->Note: There are no standardized values for the `options` parameter here, as they directly relate to the HTTP client being used. The example above passes the raw options for the client library.
+> Note: There are no standardized values for the `options` parameter here, as they directly relate to the HTTP client being used. The example above passes the raw options for the client library.
 
 **Note: You need to manually add adapter-related libraries to the `deps`:**
 
@@ -150,7 +158,7 @@ iex> Telegex.send_message -1001486769003, "Hello!"
      first_name: "Telegex Dev",
      is_bot: true,
      id: 6258629308
-  }, 
+  },
   # omitted part...
  }}
 ```
@@ -242,7 +250,7 @@ defmodule YourProject.HookHandler do
 
   @impl true
   def on_update(update) do
-  
+
     # consume the update
     :ok
   end
